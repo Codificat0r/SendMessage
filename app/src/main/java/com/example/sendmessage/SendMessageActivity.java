@@ -31,12 +31,16 @@ public class SendMessageActivity extends AppCompatActivity {
                 bundle.putString("message",edtMessage.getText().toString());
                 //3. Crear un objeto Intent. Tenemos que poner el contexto y la clase destinataria.
                 //Por nomenclatura usamos el nombre de la clase tambien en el this. Accedemos al contexto
-                //de la activity.
+                //de la activity, aprobechando que las Activity's heredan de Context. Le hemos mandado
+                //parte de nuestro contexto de esta Activity a la otra. Usamos la clase, porque todavía no esta en memoria
+                //entonces accedemos a la clase compilada.
                 Intent intent = new Intent(SendMessageActivity.this,ViewMessageActivity.class);
                 //4. Añadir el Bundle al Intent
                 intent.putExtras(bundle);
-                //5. Iniciar la Activity ViewMessage
+                //5. Iniciar la Activity ViewMessage. Sabe que activity debe iniciar porque este metodo
+                //iniciará la activity a la que se mande el intent.
                 startActivity(intent);
+                //Break del switch
                 break;
         }
     }
