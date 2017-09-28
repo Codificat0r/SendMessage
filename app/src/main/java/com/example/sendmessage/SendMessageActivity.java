@@ -10,6 +10,7 @@ import android.widget.EditText;
 public class SendMessageActivity extends AppCompatActivity {
 
     private EditText edtMessage;
+    private EditText edtUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +18,7 @@ public class SendMessageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_send_message);
 
         edtMessage = (EditText)findViewById(R.id.edtMessage);
+        edtUser = (EditText)findViewById(R.id.edtUser);
     }
 
     public void getOnClick(View view)
@@ -29,6 +31,7 @@ public class SendMessageActivity extends AppCompatActivity {
                 //2. Crear un objeto Bundle y añadir el mensaje, con un conjunto de clave valor.
                 Bundle bundle = new Bundle();
                 bundle.putString("message",edtMessage.getText().toString());
+                bundle.putString("user", edtUser.getText().toString());
                 //3. Crear un objeto Intent. Tenemos que poner el contexto y la clase destinataria.
                 //Por nomenclatura usamos el nombre de la clase tambien en el this. Accedemos al contexto
                 //de la activity, aprobechando que las Activity's heredan de Context. Le hemos mandado
