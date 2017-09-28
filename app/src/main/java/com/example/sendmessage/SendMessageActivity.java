@@ -1,16 +1,21 @@
 package com.example.sendmessage;
 
-import android.content.Context;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+
+/**
+ * Esta clase envía un mensaje de un usuario a otro.
+ * @author Carlos Cruz Domínguez
+ */
 
 public class SendMessageActivity extends AppCompatActivity {
 
     private EditText edtMessage;
     private EditText edtUser;
+    private Button btnOk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,9 +24,20 @@ public class SendMessageActivity extends AppCompatActivity {
 
         edtMessage = (EditText)findViewById(R.id.edtMessage);
         edtUser = (EditText)findViewById(R.id.edtUser);
+        //Vamos a ver otra manera de ejecutar codigo al clickar en el boton, con el evento onClick.
+        //1. Registrar un Listener o Escuchador OnClickListener. Usamos una clase anonima.
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+
+            }
+        }
+        );
+        //Clear esa clase anonima es lo mismo que crear una class que implemente la interfaz View.OnClickListener:
+        //class MyListener implements View.OnClickListener. Si nos pieden, por ejemplo, una app con 5 botones ya si
+        //usamos una clase normal y le ponemos un new MyListener a cada boton.
     }
 
-    public void getOnClick(View view)
+    /*public void getOnClick(View view)
     {
         switch (view.getId())
         {
@@ -46,5 +62,5 @@ public class SendMessageActivity extends AppCompatActivity {
                 //Break del switch
                 break;
         }
-    }
+    }*/
 }

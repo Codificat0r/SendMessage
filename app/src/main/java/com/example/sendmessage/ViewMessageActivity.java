@@ -5,6 +5,17 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/**
+ * Esta clase recibe el mensaje de un usuario y lo muestra en pantalla.
+ * @author Carlos Cruz Domínguez
+ * <u>Conceptos aprendidos:</u>
+ * <ul>
+ *     <li>Concepto Context</li>
+ *     <li>Paso de parámetros mediante el objeto Bundle</li>
+ *     <li>Paso de mensajes entre dos actividades mediante la clase <a href="https://developer.android.com/reference/android/content/Intent.html">Intent</a></li>
+ * </ul>
+ */
+
 public class ViewMessageActivity extends AppCompatActivity {
 
     private TextView txvViewMessage;
@@ -27,7 +38,8 @@ public class ViewMessageActivity extends AppCompatActivity {
         //Activity a otra no volvemos a crear los objetos. Cogemos el intent, cogemos el bundle con
         //getExtras, y accedemos al string con su key.
         txvViewMessage.setText(getIntent().getExtras().getString("message"));
-        //Recogemos el string de R, ya no es un layout o un elemento gráfico, ya no es id.
+        //Recogemos el string de R, ya no es un layout o un elemento gráfico, ya no es id. Al ser una referencia
+        //el R.string.txvViewUser, pues tenemos que recoger la cadena con getResources().getString().
         String viewUser = String.format(getResources().getString(R.string.txvViewUser), getIntent().getExtras().getString("user"));
         txvViewUser.setText(viewUser);
     }
