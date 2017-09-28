@@ -1,5 +1,6 @@
 package com.example.sendmessage;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,11 +25,17 @@ public class SendMessageActivity extends AppCompatActivity {
 
         edtMessage = (EditText)findViewById(R.id.edtMessage);
         edtUser = (EditText)findViewById(R.id.edtUser);
+        btnOk = (Button)findViewById(R.id.btnOk);
         //Vamos a ver otra manera de ejecutar codigo al clickar en el boton, con el evento onClick.
         //1. Registrar un Listener o Escuchador OnClickListener. Usamos una clase anonima.
         btnOk.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view){
-
+                Bundle bundle = new Bundle();
+                bundle.putString("message",edtMessage.getText().toString());
+                bundle.putString("user", edtUser.getText().toString());
+                Intent intent = new Intent(SendMessageActivity.this,ViewMessageActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         }
         );
