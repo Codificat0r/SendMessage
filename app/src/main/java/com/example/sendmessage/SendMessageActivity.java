@@ -39,7 +39,9 @@ public class SendMessageActivity extends AppCompatActivity{
                 //bundle.putString("message",edtMessage.getText().toString());
                 //bundle.putString("user", edtUser.getText().toString());
                 //Al ser serializable la clase (implementar el interfaz serializable) podemos pasarla en el bundle. La
-                //recogemos en la otra activity con getSerializable.
+                //recogemos en la otra activity con getSerializable. Se puede hacer con la interfaz Parcelable tambien.
+                //Parcelable esta mejor porque te separa los campos y serializable te los pone seguidos. Pero a efectos
+                //de codigo es lo mismo solo que usariamos putParcelable y getParcelable.
                 bundle.putSerializable("message", message);
                 Intent intent = new Intent(SendMessageActivity.this,ViewMessageActivity.class);
                 intent.putExtras(bundle);
